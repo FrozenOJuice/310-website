@@ -1,5 +1,6 @@
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
+from data_manager import load_movies
 
 app = FastAPI()
 
@@ -19,3 +20,15 @@ async def read_root():
 @app.get('/ping')
 async def read_ping():
     return { "message": "pong" }
+
+@app.get("/movies")
+def get_movies():
+    return load_movies()
+
+@app.get("/movies/{movie_id}")
+def get_movie(movie_id: int):
+    movies = load_movies()
+    for movie in movies:
+        if movie["id"] == movie_id:
+            return movie
+    raise HTTPException(status_code=404, detail="Movie not found")
