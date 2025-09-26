@@ -1,6 +1,6 @@
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
-from data_manager import load_movies
+from backend.data_manager import load_movies
 
 app = FastAPI()
 

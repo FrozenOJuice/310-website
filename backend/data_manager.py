@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-DATA_FILE = Path("data/movies.json")
+DATA_FILE = Path("backend/data/movies.json")
 
 def load_movies():
     with open(DATA_FILE, "r", encoding="utf-8") as f:
